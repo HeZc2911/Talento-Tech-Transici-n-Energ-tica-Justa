@@ -6,23 +6,15 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 main 
 {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   perspective: 2px;
-}
-
-.navbar
-{
-transition: background-color ease 0.3s !important;
-}
-
-.navbar-scrolled
-{
-  background-color: #757575 !important;
 }
 
 main section 
@@ -45,7 +37,7 @@ main section h1
 
 .no-parallax 
 {
-  background-color: #5333ed;
+  background-color: #e99329;
   z-index: 999;
 }
 
@@ -70,7 +62,7 @@ main section h1
 
 .bg::after 
 {
-  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("styles/img/solar-power-plant-field-aerial-view-solar-panels.jpg");
+  background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url("styles/img/person-near-alternative-energy-plant.jpg");
   background-size: cover;
 }
 
