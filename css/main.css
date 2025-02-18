@@ -1230,6 +1230,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     line-height: 1.255;
     color: #000000;
     margin-top: 0;
+    /*text-align: justify;*/
 }
 
 .display-2--light {
