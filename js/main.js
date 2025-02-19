@@ -475,7 +475,7 @@ let datosEnergiaSolar = {}; // Objeto para almacenar los datos del CSV
 
 // Cargar el CSV al cargar la página
 function cargarDatosDesdeCSV() {
-    fetch('energia_solar.csv') // ⚠ Asegúrate de que este archivo esté en el mismo directorio que tu HTML
+    fetch("Dbs/solar-energy-consumption.csv") // ⚠ Asegúrate de que este archivo esté en el mismo directorio que tu HTML
         .then(response => response.text()) // Convertir a texto
         .then(csvText => {
             Papa.parse(csvText, {
