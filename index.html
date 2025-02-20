@@ -211,30 +211,31 @@
 
         <div class="intro-wrap">
                 
-            <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
-                <div class="row contact-content">
+            <div class="row contact-content" data-aos="fade-up">
                     <h3 class="display-2">Estimación del porcentaje de energia solar</h3>
                     <h1 class="dis display-2--light">Ingrese su consumo eléctrico total</h1>
-                    <form id="solarForm" class="form-field">
-                        <div class="display-2">
-                            <label for="consumo" class="display-2--light">Consumo eléctrico total (kWh)</label>
-                            <input type="number" class="display-2--light full-width" id="consumo" required>
-                        </div>  
-                        <div class="">
-                            <label for="year" class="display-2--light">Seleccione un año</label>
-                            <input type="number" class="display-2--light full-width" id="year" placeholder="Ejemplo: 2005">
-                        </div>
-                        <button type="submit" class="btn--primary">Calcular</button>
+                    <form id="solarForm">
+                        <fieldset>
+                            <div class="form-field">
+                                <label for="consumo" class="display-2--light">Consumo eléctrico total (kWh)</label>
+                                <input type="number" class="display-2--light full-width" id="consumo" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="year" class="display-2--light">Seleccione un año</label>
+                                <input type="number" class="display-2--light full-width" id="year" placeholder="Ejemplo: 2005">
+                            </div>
+                            <div class="form-field">
+                                <button type="submit" class="btn--primary">Calcular</button>
+                                <button type="reset" class="btn--primary">reset</button>
+                            </div>
                     </form>
-                    <div class="mt-4">
-                        <h4 class="display-2--light" >Resultado:</h4>
-                        <p id="resultado" class="display-2--light full-width"></p>
-                    </div>
-                </div>
-                </div>
-            </div> <!-- end section-header -->
-
-        </div> <!-- end intro-wrap -->
+                            <div class="mt-4">
+                                <h4 class="display-2--light" >Resultado:</h4>
+                                <p id="resultado" class="display-2--light full-width"></p>
+                            </div>
+                        </fieldset>
+                </div> <!-- end section-header -->
+            </div> <!-- end intro-wrap -->
 
     <!-- clients
     ================================================== -->
@@ -543,7 +544,9 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-
+    <script src="js/Dbs/assets.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    
 </body>
 
 </html>
