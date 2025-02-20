@@ -2807,7 +2807,7 @@ html.no-csstransitions .home-content__main {
 .clients-testimonials .testimonials__avatar {
     height: 8.4rem;
     width: 8.4rem;
-    border-radius: 50%;
+    border-radius: 100%;
     margin: 0 auto 1.2rem auto;
 }
 
@@ -3412,7 +3412,7 @@ footer .row {
     background-size: 24px 16px, auto;
     border: none;
     margin-bottom: 1.8rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgb(5, 2, 2);
 }
 
 .footer-subscribe #mc-form input[type="email"]:focus {
@@ -3420,32 +3420,32 @@ footer .row {
 }
 
 .footer-subscribe #mc-form input[type="email"]::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(11, 1, 1, 0.2);
 }
 
 .footer-subscribe #mc-form input[type="email"]:-moz-placeholder {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(7, 1, 1, 0.978);
     /* Firefox 18- */
 }
 
 .footer-subscribe #mc-form input[type="email"]::-moz-placeholder {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(7, 4, 4, 0.2);
     /* Firefox 19+ */
 }
 
 .footer-subscribe #mc-form input[type="email"]:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(5, 4, 4, 0.2);
 }
 
 .footer-subscribe #mc-form input[type="email"].placeholder {
-    color: rgba(255, 255, 255, 0.2) !important;
+    color: rgba(10, 2, 2, 0.2) !important;
 }
 
 .footer-subscribe #mc-form input[type=submit] {
     position: absolute;
     top: 0;
     right: 0;
-    color: #FFFFFF;
+    color: #0e0000;
     background: #39b54a;
     border-color: #39b54a;
     padding: 0 20px;
