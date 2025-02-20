@@ -3337,11 +3337,11 @@ footer {
     font-size: 15px;
     line-height: 2;
     text-align: center;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(11, 11, 11, 0.3);
 }
 
 footer h4 {
-    color: #FFFFFF;
+    color: #090808;
     font-size: 1.6rem;
     line-height: 1.313;
     margin-top: 0;
@@ -3349,7 +3349,7 @@ footer h4 {
 }
 
 footer a {
-    color: #FFFFFF;
+    color: #0b0b0b;
 }
 
 footer a:hover, footer a:focus, footer a:active {
