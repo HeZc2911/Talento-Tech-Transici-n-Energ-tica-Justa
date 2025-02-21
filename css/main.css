@@ -2807,7 +2807,7 @@ html.no-csstransitions .home-content__main {
 .clients-testimonials .testimonials__avatar {
     height: 8.4rem;
     width: 8.4rem;
-    border-radius: 100%;
+    border-radius: 50%;
     margin: 0 auto 1.2rem auto;
 }
 
