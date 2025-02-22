@@ -421,7 +421,26 @@ img.pull-left {
 /* ------------------------------------------------------------------- 
  * ## tables
  * ------------------------------------------------------------------- */
-table {
+/*Estilos para la información tabular*/
+#energyTable {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+#energyTable thead th {
+    background: #2c3e50;
+    color: white;
+    font-weight: 600;
+}
+
+#energyTable tbody tr:hover {
+    background-color: #f5f7fa;
+    transition: background-color 0.3s ease;
+}
+
+ table {
     border-width: 0;
     width: 100%;
     max-width: 100%;
