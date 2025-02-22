@@ -66,28 +66,6 @@ function cargarTablaConsumo() {
     inicializarDataTable(datosTabla);
 }
 
-// Función para inicializar DataTables
-function inicializarDataTable(datos) {
-    if ($.fn.DataTable.isDataTable('#energyTable')) {
-        $('#energyTable').DataTable().clear().destroy();
-    }
-    $('#energyTable').DataTable({
-        data: datos,
-        columns: [
-            { data: "Year", title: "Año" },
-            { data: "Country", title: "País" },
-            { data: "Electricity from solar (TWh)", title: "Energía Solar (TWh)" },
-            { data: "Electricity from wind (TWh)", title: "Energía Eólica (TWh)" },
-            { data: "Primary energy consumption per capita (kWh/person)", title: "Consumo per cápita (kWh)" }
-        ],
-        language: {
-            url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
-        },
-        responsive: true,
-        order: [[0, 'desc']]
-    });
-}
-
 // Escuchar el envío del formulario
 document.getElementById("solarForm").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -125,3 +103,25 @@ document.getElementById("solarForm").addEventListener("submit", function (event)
          Electricidad solar generada: ${electricidadSolar} TWh.
          Capacidad solar instalada: ${capacidadSolar} GW.`;
 });
+
+// Función para inicializar DataTables
+function inicializarDataTable(datos) {
+    if ($.fn.DataTable.isDataTable('#energyTable')) {
+        $('#energyTable').DataTable().clear().destroy();
+    }
+    $('#energyTable').DataTable({
+        data: datos,
+        columns: [
+            { data: "Year", title: "Año" },
+            { data: "Country", title: "País" },
+            { data: "Electricity from solar (TWh)", title: "Energía Solar (TWh)" },
+            { data: "Electricity from wind (TWh)", title: "Energía Eólica (TWh)" },
+            { data: "Primary energy consumption per capita (kWh/person)", title: "Consumo per cápita (kWh)" }
+        ],
+        language: {
+            url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+        },
+        responsive: true,
+        order: [[0, 'desc']]
+    });
+}
