@@ -3601,8 +3601,67 @@ footer .row {
     }
 }
 
-#solarForm input{
-    width: 80%;
+/* Estilos para el formulario de estimación */
+#solarForm {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
 }
 
-/*# sourceMappingURL=main.css.map */
+/* Estilos para los inputs y select */
+#solarForm input,
+#solarForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1rem;
+}
+
+/* Ajustes al pasar el mouse */
+#solarForm select:hover,
+#solarForm input:hover {
+    border-color: #ff9800;
+}
+
+/* Botones del formulario */
+#solarForm button {
+    background-color: #ff9800;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#solarForm button:hover {
+    background-color: #e68900;
+}
+
+/* Estilos para la tabla de resultados */
+#tablaEnergia {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#tablaEnergia th, #tablaEnergia td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+#tablaEnergia th {
+    background-color: #ff9800;
+    color: white;
+}
+
+#tablaEnergia tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

@@ -208,11 +208,17 @@
 
         <div class="intro-wrap">
                 
-            <div class="row contact-content" data-aos="fade-up">
-                    <h3 class="display-2">Estimación del porcentaje de energia solar</h3>
+            <div class="row" data-aos="fade-up">
+                    <h3 class="display-2 display-2--light">Estimación del porcentaje de energia solar</h3>
                     <h1 class="dis display-2--light">Ingrese su consumo eléctrico total</h1>
                     <form id="solarForm">
                         <fieldset>
+                            <div class="form-field">
+                                <label class="display-2--light" for="pais">Seleccionar País:</label>
+                                <select class="display-2--light full-width" id="pais">
+                                    <option value="">Cargando países...</option>
+                                </select>                                
+                            </div>
                             <div class="form-field">
                                 <label for="consumo" class="display-2--light">Consumo eléctrico total (kWh)</label>
                                 <input type="number" class="display-2--light full-width" id="consumo" required>
@@ -244,6 +250,21 @@
                 <h1 class="display-2">Estas son los numeros de las casas usando energia sustentable</h1>
             </div>
         </div> <!-- end section-header -->
+        <table id="tablaEnergia">
+            <thead>
+                <tr>
+                    <th>Año</th>
+                    <th>Capacidad Solar (MW)</th>
+                    <th>Electricidad Solar (TWh)</th>
+                    <th>Porcentaje Solar (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertarán las filas con JS -->
+            </tbody>
+        </table>
+        
+
 
         <div class="row clients-outer" data-aos="fade-up">
             <div class="col-full">
