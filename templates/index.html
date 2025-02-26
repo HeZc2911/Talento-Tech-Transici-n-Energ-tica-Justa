@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html class="no-js" lang="es">
 <!--<![endif]-->
-
+<!-- Inicializar DataTables -->
 
 <head>
 
@@ -21,19 +21,24 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pace.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
 </head>
 
@@ -45,7 +50,7 @@
 
         <div class="header-logo">
             <a class="site-logo" href="index.html">
-                <img src="images/logo.png" alt="Homepage">
+                <img src=""{{ url_for('static', filename='images/logo') }}"" alt="Homepage">
             </a>
         </div>
 
@@ -204,79 +209,106 @@
 
     <!-- works
     ================================================== -->
-    <section id='works' class="s-works">
-
+    <section id="works" class="s-works">
         <div class="intro-wrap">
-                
-            <div class="row contact-content" data-aos="fade-up">
-                    <h3 class="display-2 display-2--light">Estimación del porcentaje de energia solar</h3>
-                    <h1 class="dis display-2--light">Ingrese su consumo eléctrico total</h1>
-                    <form id="solarForm">
-                        <fieldset>
-                            <div class="form-field">
-                                <label class="display-2--light" for="pais">Seleccionar País:</label>
-                                <select class="display-2--light full-width" id="pais">
-                                    <option value="">Cargando países...</option>
-                                </select>                                
-                            </div>
-                            <div class="form-field">
-                                <label for="consumo" class="display-2--light">Consumo eléctrico total (kWh)</label>
-                                <input type="number" class="display-2--light full-width" id="consumo" required>
-                            </div>
-                            <div class="form-field">
-                                <label for="year" class="display-2--light">Seleccione un año</label>
-                                <input type="number" class="display-2--light full-width" id="year" placeholder="Ejemplo: 2005">
-                            </div>
-                            <div class="form-field">
-                                <button type="submit" class="btn--primary">Calcular</button>
-                                <button type="reset" class="btn--primary">reset</button>
-                            </div>
-                    </form>
-                            <div class="mt-4">
-                                <h4 class="display-2--light" >Resultado:</h4>
-                                <p id="resultado" class="display-2--light full-width"></p>
-                            </div>
-                        </fieldset>
-                </div> <!-- end section-header -->
-            </div> <!-- end intro-wrap -->
+            <div class="row contact-content">
+                <h3 class="display-2--light">Estimación del porcentaje de energía solar</h3>
+                <h1 class="dis display-2--light">Ingrese su consumo eléctrico total</h1>
 
-    <!-- clients
-    ================================================== -->
-    <section id="clients" class="s-clients">
-<!-- end section-header -->
- <h2>Datos Históricos</h2>
-    <table id="tablaEnergia">
-        <thead>
-            <tr>
-                <th>Año</th>
-                <th>Capacidad Solar (GW)</th>
-                <th>Electricidad Solar (TWh)</th>
-                <th>Porcentaje Solar (%)</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+                <!-- Formulario que usa AJAX -->
+                <form id="solarForm">
+                    <fieldset>
+                        <div class="form-field">
+                            <label for="pais">Seleccionar País:</label>
+                            <select id="pais" name="pais">
+                                {% for pais in paises %}
+                                    <option value="{{ pais }}">{{ pais }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="consumo">Consumo eléctrico total (kWh)</label>
+                            <input type="number" id="consumo" name="consumo" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="year">Seleccione un año</label>
+                            <input type="number" id="year" name="year" placeholder="Ejemplo: 2005">
+                        </div>
+                        <div class="form-field">
+                            <button type="submit" class="btn--primary">Calcular</button>
+                            <button type="reset" id="reset-btn" class="btn--primary">Reset</button>
+                        </div>
+                    </fieldset>
+                </form>
 
-    <!-- 🟢 Sección del Dashboard de Energía Renovable -->
-    <h2>Dashboard de Producción y Consumo</h2>
-    <div class="dashboard-container">
-      <div class="chart-container">
-        <h3>Producción de Energía por Fuente</h3>
-        <canvas id="graficoBarras" style="height:300px;"></canvas>
-      </div>
-      <div class="chart-container">
-        <h3>Participación de Energías Renovables</h3>
-        <canvas id="graficoTorta" style="height:300px;"></canvas>
-      </div>
-      <div class="chart-container">
-        <h3>Tendencia en la Capacidad Instalada</h3>
-        <canvas id="graficoLineas" style="height:300px;"></canvas>
-      </div>
-      <div class="chart-container">
-        <h3>Comparación Consumo Renovable vs. Convencional</h3>
-        <canvas id="graficoArea" style="height:300px;"></canvas>
-      </div>
-    </div>
+                <div class="mt-4">
+                    <h4>Resultado:</h4>
+                    <p id="resultado"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Datos Históricos -->
+        <h2>Datos Históricos</h2>
+        <div id="tabla-container">
+            {{ tabla_html | safe }}
+        </div>
+
+        <!-- Sección del Dashboard de Energía Renovable -->
+        <h2>Dashboard de Producción y Consumo</h2>
+        <div class="dashboard-container">
+            <div class="chart-container">
+                <h3>Producción de Energía por Fuente</h3>
+                <div id="graficoBarras">
+                    {{ graph_barras_html | safe }}
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3>Participación de Energías Renovables</h3>
+                <div id="graficoTorta">
+                    {{ graph_pie_html | safe }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script para AJAX y DataTables -->
+    <script>
+        $(document).ready(function() {  
+            $('#tablaEnergia').DataTable({
+                paging: true,
+                searching: true
+            });
+
+            // Manejo del formulario con AJAX
+            $("#solarForm").on("submit", function(event) {
+                event.preventDefault(); // Evitar recarga
+
+                $.ajax({
+                    url: "/calcular",
+                    type: "POST",
+                    data: $(this).serialize(),
+                    dataType: "json",
+                    success: function(response) {
+                        $("#resultado").html(response.resultado);
+                        $("#tabla-container").html(response.tabla_html);
+                        $("#graficoBarras").html(response.graph_barras_html);
+                        $("#graficoTorta").html(response.graph_pie_html);
+                    },
+                    error: function(xhr) {
+                        alert("Error: " + xhr.responseJSON.error);
+                    }
+                });
+            });
+
+            // Botón de reset solo limpia el resultado
+            $("#reset-btn").on("click", function() {
+                $("#resultado").html("");
+            });
+        });
+    </script>
+      
+      
     
     <div class="row section-header" data-aos="fade-up">
         <div class="col-full">
@@ -568,14 +600,7 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/Dbs/assets.js"></script>
-    
+
 </body>
 
 </html>

@@ -470,3 +470,29 @@
         
         
 })(jQuery);
+
+
+document.getElementById("solarForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // ⛔ Evita recargar la página
+
+    const formData = new FormData(this);
+
+    fetch("/calcular", {
+        method: "POST",
+        body: new URLSearchParams(formData) // ✅ Convierte los datos a formato URL
+    })
+    .then(response => response.json()) // ⬅ Intenta convertir a JSON
+    .then(data => {
+        if (data.error) {
+            alert("❌ " + data.error);
+        } else {
+            document.getElementById("resultado").innerText = data.resultado;
+            document.getElementById("tablaEnergia").innerHTML = data.tabla_html;
+            document.getElementById("graficoBarras").innerHTML = data.graph_barras_html;
+            document.getElementById("graficoTorta").innerHTML = data.graph_pie_html;
+        }
+    })
+    .catch(error => console.error("❌ Error en la solicitud:", error));
+});
+
+
