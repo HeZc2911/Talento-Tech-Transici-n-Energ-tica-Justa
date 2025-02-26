@@ -41,10 +41,12 @@ def graficar_produccion_energia():
     plt.ylabel("Capacidad Instalada de Energía Solar (GW o MW)")
     plt.title(f"Producción de Energía Solar en el Año {ultimo_anio}")
     plt.xticks(rotation=90)
+    plt.tight_layout()
 
     ruta_static = os.path.join(ruta_base, "static")
     if not os.path.exists(ruta_static):
         os.makedirs(ruta_static)
+
 
     #ruta_imagen = os.path.join(ruta_static, "grafico.png")
     #plt.savefig(ruta_imagen)
